@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './importIcons.jsx'
+import './icon.scss'
 
 interface IconProps {
     icon: string
@@ -10,7 +11,7 @@ interface IconProps {
 const Icon: React.FunctionComponent<IconProps> = function (props) {
     return (
         <div>
-            <svg className={`${props.className ? props.className : ''}`}>
+            <svg className={`mini-icon ${props.className ? props.className : ''}`}>
                 <use xlinkHref={`#${props.icon}`} />
             </svg>
         </div>
