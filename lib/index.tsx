@@ -1,6 +1,7 @@
-import Button from './button';
+import React from 'react';
+import ReactDOM from 'react-dom'
+import Icon from "./icon"
 
-const a = 1
-console.log('hi')
-
-export {Button, a};
+ReactDOM.render(<div>
+    <Icon icon='reactSvg' className="my-icon" />
+</div>, document.querySelector("#root"))
