@@ -1,5 +1,4 @@
 const classes = function (...names: (string | undefined)[]) {
-    // names.filter(Boolean).join(' ')
-    return names.join(' ').trim()
+    return names.filter(Boolean).join(' ')
 }
 export default classes
