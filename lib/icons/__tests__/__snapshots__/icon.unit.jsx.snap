@@ -29,5 +29,3 @@ exports[`icon icon webpackSvg 1`] = `
   />
 </svg>
 `;
-
-exports[`icon icons onClick 1`] = `2`;
