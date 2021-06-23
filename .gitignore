@@ -1,4 +1,6 @@
 /dist/*
+test-results/
+.history
 # Logs
 logs
 *.log
