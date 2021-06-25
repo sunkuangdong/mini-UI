@@ -1,30 +1,30 @@
-<testsuites name="jest tests" tests="10" failures="0" time="3.778">
-  <testsuite name="我的第一个测试用例" errors="0" failures="0" skipped="0" timestamp="2021-06-21T14:24:07" time="2.181" tests="1">
-    <testcase classname="我的第一个测试用例 add(1,2) 等于3" name="我的第一个测试用例 add(1,2) 等于3" time="0.003">
+<testsuites name="jest tests" tests="10" failures="0" time="8.14">
+  <testsuite name="button" errors="0" failures="0" skipped="0" timestamp="2021-06-25T02:59:53" time="3.066" tests="1">
+    <testcase classname="button 是个 div" name="button 是个 div" time="0.024">
     </testcase>
   </testsuite>
-  <testsuite name="button" errors="0" failures="0" skipped="0" timestamp="2021-06-21T14:24:07" time="2.253" tests="1">
-    <testcase classname="button 是个 div" name="button 是个 div" time="0.013">
-    </testcase>
-  </testsuite>
-  <testsuite name="button" errors="0" failures="0" skipped="0" timestamp="2021-06-21T14:24:07" time="2.232" tests="4">
+  <testsuite name="button" errors="0" failures="0" skipped="0" timestamp="2021-06-25T02:59:53" time="3.63" tests="4">
     <testcase classname="button 接受一个 className" name="button 接受一个 className" time="0.004">
     </testcase>
-    <testcase classname="button 接受两个 className" name="button 接受两个 className" time="0.001">
+    <testcase classname="button 接受两个 className" name="button 接受两个 className" time="0">
     </testcase>
-    <testcase classname="button 不能传 undefined null false" name="button 不能传 undefined null false" time="0">
+    <testcase classname="button 不能传 undefined null false" name="button 不能传 undefined null false" time="0.001">
     </testcase>
-    <testcase classname="button 什么都不传应该得到空字符串" name="button 什么都不传应该得到空字符串" time="0">
+    <testcase classname="button 什么都不传应该得到空字符串" name="button 什么都不传应该得到空字符串" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="icon" errors="0" failures="0" skipped="0" timestamp="2021-06-21T14:24:07" time="2.338" tests="4">
-    <testcase classname="icon icon gitHubSvg" name="icon icon gitHubSvg" time="0.011">
+  <testsuite name="我的第一个测试用例" errors="0" failures="0" skipped="0" timestamp="2021-06-25T02:59:56" time="0.496" tests="1">
+    <testcase classname="我的第一个测试用例 add(1,2) 等于3" name="我的第一个测试用例 add(1,2) 等于3" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="icon" errors="0" failures="0" skipped="0" timestamp="2021-06-25T02:59:53" time="3.698" tests="4">
+    <testcase classname="icon icon gitHubSvg" name="icon icon gitHubSvg" time="0.015">
     </testcase>
     <testcase classname="icon icon reactSvg" name="icon icon reactSvg" time="0.001">
     </testcase>
-    <testcase classname="icon icon webpackSvg" name="icon icon webpackSvg" time="0.001">
+    <testcase classname="icon icon webpackSvg" name="icon icon webpackSvg" time="0">
     </testcase>
-    <testcase classname="icon icons onClick" name="icon icons onClick" time="0.035">
+    <testcase classname="icon icons onClick" name="icon icons onClick" time="0.037">
     </testcase>
   </testsuite>
 </testsuites>
