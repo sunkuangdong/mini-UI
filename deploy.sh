@@ -1,4 +1,3 @@
 #!/bin/env bash
 npm version $1 && \
-git push
-yarn publish
+    git push

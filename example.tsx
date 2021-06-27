@@ -5,6 +5,7 @@ import "./example.scss"
 import Icon from "./lib/icons/icon"
 import IconExample from "./lib/icons/icon.example"
 import ButtonExample from "./lib/button.example"
+import DialogExample from "./lib/dialog/dialog.example"
 
 ReactDom.render((
     <Router>
@@ -21,12 +22,14 @@ ReactDom.render((
                     <ul>
                         <li><Link to="/icon">Icon</Link></li>
                         <li><Link to="/button">Button</Link></li>
+                        <li><Link to="/dialog">Dialog</Link></li>
                     </ul>
                 </aside>
                 {/* 右边内容区域 */}
                 <main>
                     <Route path={"/icon"} component={IconExample} ></Route>
                     <Route path={"/button"} component={ButtonExample} ></Route>
+                    <Route path={"/dialog"} component={DialogExample} ></Route>
                 </main>
             </div>
             <footer>

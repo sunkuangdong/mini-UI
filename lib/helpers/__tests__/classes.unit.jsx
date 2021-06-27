@@ -1,5 +1,5 @@
 
-import classes from '../classes'
+import { classes } from '../classes'
 describe('button', () => {
     it('接受一个 className', () => {
         const result = classes('a')
@@ -13,7 +13,7 @@ describe('button', () => {
         const result = classes("a", undefined, false, null, "b")
         expect(result).toEqual("a b")
     })
-    it("什么都不传应该得到空字符串", () => { 
+    it("什么都不传应该得到空字符串", () => {
         const result = classes()
         expect(result).toEqual("")
     })
