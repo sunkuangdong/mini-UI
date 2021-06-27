@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import Dialog from './dialog'
+import Dialog, { alertDialog, confirmDialog } from './dialog'
 
 const DialogExample: React.FunctionComponent = () => {
     const [x, setX] = useState(false)
@@ -12,6 +12,10 @@ const DialogExample: React.FunctionComponent = () => {
     }
     const close = () => {
         setX(false)
+    }
+    const yes = () => {
+        console.log("yes")
+        return false
     }
     return (
         <div>
@@ -41,15 +45,8 @@ const DialogExample: React.FunctionComponent = () => {
             </div >
             <div>
                 <h1>example 3</h1>
-                <Dialog visible={y} closeMask={true} buttons={[
-                    <Fragment>
-                        <button onClick={() => setY(!y)}>ok</button>
-                        <button onClick={() => setY(!y)}>cancel</button>
-                    </Fragment>
-                ]} onClose={() => { setY(!y) }}>
-                    <strong>hi</strong>
-                </Dialog>
-                <button onClick={() => setY(!y)}>提示消息</button>
+                <button onClick={() => alertDialog("1")}>alert</button>
+                <button onClick={() => confirmDialog("1", () => yes(), () => { console.log("no") })}>confirm</button>
             </div >
         </div>
     )

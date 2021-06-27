@@ -39,7 +39,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
                             {children}
                         </main>
                         <footer className={sc("footer")}>
-                            {buttons ? buttons.map((item, index) => React.cloneElement(item, { key: index })) : <div></div>}
+                            {buttons && buttons.map((item, index) => React.cloneElement(item, { key: index }))}
                         </footer>
                     </div>
                 </Fragment>
@@ -48,5 +48,50 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
         ), document.body)
     )
 }
+
+const alertDialog = function (content: string) {
+    const div = document.createElement("div")
+    const component = (
+        <Dialog visible={true} onClose={() => {
+            ReactDOM.render(React.cloneElement(component, { visible: false }), div)
+            ReactDOM.unmountComponentAtNode(div)
+            div.remove()
+        }}>
+            <strong>{content}</strong>
+        </Dialog>
+    )
+    document.body.append(div)
+    ReactDOM.render(component, div)
+}
+const confirmDialog = function (content: string, yes?: () => boolean, no?: () => void) {
+    const onYes = () => {
+        const bool = yes && yes()
+        if (bool) {
+            ReactDOM.render(React.cloneElement(component, { visible: false }), div)
+            ReactDOM.unmountComponentAtNode(div)
+            div.remove()
+        }
+    }
+    const onNo = () => {
+        ReactDOM.render(React.cloneElement(component, { visible: false }), div)
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+        no && no()
+    }
+    const div = document.createElement("div")
+    const component = (
+        <Dialog visible={true}
+            onClose={() => onNo()}
+            buttons={[
+                <button onClick={onYes}>yes</button>,
+                <button onClick={onNo}>no</button>]}>
+            {content}
+        </Dialog>
+    )
+    document.body.append(div)
+    ReactDOM.render(component, div)
+}
+
+export { alertDialog, confirmDialog }
 
 export default Dialog
