@@ -53,8 +53,9 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
 
 
 // 优化 alertDialog confirmDialog modalDialog
-const publishFunction = (content: ReactNode | ReactFragment, buttons?: Array<ReactElement>) => {
+const dialogPublishFunction = (content: ReactNode | ReactFragment, buttons?: Array<ReactElement>) => {
     const onClose = () => {
+        console.log(1);
         ReactDOM.render(React.cloneElement(component, { visible: false }), div)
         ReactDOM.unmountComponentAtNode(div)
         div.remove()
@@ -71,7 +72,7 @@ const publishFunction = (content: ReactNode | ReactFragment, buttons?: Array<Rea
 }
 const alertDialog = function (content: ReactNode | ReactFragment) {
     const buttons = [<button onClick={() => close()}>ok</button>]
-    const close = publishFunction(content, buttons)
+    const close = dialogPublishFunction(content, buttons)
 }
 const confirmDialog = function (content: ReactNode | ReactFragment, yes?: () => boolean, no?: () => void) {
     const onYes = () => {
@@ -88,10 +89,10 @@ const confirmDialog = function (content: ReactNode | ReactFragment, yes?: () => 
         <button onClick={onYes}>yes</button>,
         <button onClick={onNo}>no</button>
     ]
-    const close = publishFunction(content, buttons)
+    const close = dialogPublishFunction(content, buttons)
 }
 const modalDialog = function (content: ReactNode | ReactFragment, buttons?: Array<ReactElement>) {
-    const close = publishFunction(content, buttons)
+    const close = dialogPublishFunction(content, buttons)
     return close
 }
 
