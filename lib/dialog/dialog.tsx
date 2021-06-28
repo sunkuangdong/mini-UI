@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from 'react'
+import React, { Fragment, ReactElement, ReactFragment, ReactNode } from 'react'
 import ReactDOM from 'react-dom';
 import "./dialog.scss"
 import { scopedClassMaker } from "../helpers/classes"
@@ -31,16 +31,18 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
                     <div className={"mini-dialog"}>
                         <header className={sc("header")}>
                             提示
-                        <div className={sc("close")} onClick={onClose}>
+                            <div className={sc("close")} onClick={onClose}>
                                 <Icon icon="close" />
                             </div>
                         </header>
                         <main className={sc("main")}>
                             {children}
                         </main>
-                        <footer className={sc("footer")}>
-                            {buttons && buttons.map((item, index) => React.cloneElement(item, { key: index }))}
-                        </footer>
+                        {buttons && buttons.length &&
+                            <footer className={sc("footer")}>
+                                {buttons && buttons.map((item, index) => React.cloneElement(item, { key: index }))}
+                            </footer>
+                        }
                     </div>
                 </Fragment>
                 :
@@ -49,49 +51,50 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
     )
 }
 
-const alertDialog = function (content: string) {
+
+// 优化 alertDialog confirmDialog modalDialog
+const publishFunction = (content: ReactNode | ReactFragment, buttons?: Array<ReactElement>) => {
+    const onClose = () => {
+        ReactDOM.render(React.cloneElement(component, { visible: false }), div)
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+    }
     const div = document.createElement("div")
     const component = (
-        <Dialog visible={true} onClose={() => {
-            ReactDOM.render(React.cloneElement(component, { visible: false }), div)
-            ReactDOM.unmountComponentAtNode(div)
-            div.remove()
-        }}>
+        <Dialog visible={true} onClose={onClose} buttons={buttons}>
             <strong>{content}</strong>
         </Dialog>
     )
     document.body.append(div)
     ReactDOM.render(component, div)
+    return onClose;
 }
-const confirmDialog = function (content: string, yes?: () => boolean, no?: () => void) {
+const alertDialog = function (content: ReactNode | ReactFragment) {
+    const buttons = [<button onClick={() => close()}>ok</button>]
+    const close = publishFunction(content, buttons)
+}
+const confirmDialog = function (content: ReactNode | ReactFragment, yes?: () => boolean, no?: () => void) {
     const onYes = () => {
         const bool = yes && yes()
         if (bool) {
-            ReactDOM.render(React.cloneElement(component, { visible: false }), div)
-            ReactDOM.unmountComponentAtNode(div)
-            div.remove()
+            close()
         }
     }
     const onNo = () => {
-        ReactDOM.render(React.cloneElement(component, { visible: false }), div)
-        ReactDOM.unmountComponentAtNode(div)
-        div.remove()
         no && no()
+        close()
     }
-    const div = document.createElement("div")
-    const component = (
-        <Dialog visible={true}
-            onClose={() => onNo()}
-            buttons={[
-                <button onClick={onYes}>yes</button>,
-                <button onClick={onNo}>no</button>]}>
-            {content}
-        </Dialog>
-    )
-    document.body.append(div)
-    ReactDOM.render(component, div)
+    const buttons = [
+        <button onClick={onYes}>yes</button>,
+        <button onClick={onNo}>no</button>
+    ]
+    const close = publishFunction(content, buttons)
+}
+const modalDialog = function (content: ReactNode | ReactFragment, buttons?: Array<ReactElement>) {
+    const close = publishFunction(content, buttons)
+    return close
 }
 
-export { alertDialog, confirmDialog }
+export { alertDialog, confirmDialog, modalDialog }
 
 export default Dialog

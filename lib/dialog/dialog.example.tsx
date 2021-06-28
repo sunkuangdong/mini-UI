@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import Dialog, { alertDialog, confirmDialog } from './dialog'
+import Dialog, { alertDialog, confirmDialog, modalDialog } from './dialog'
 
 const DialogExample: React.FunctionComponent = () => {
     const [x, setX] = useState(false)
@@ -13,9 +13,40 @@ const DialogExample: React.FunctionComponent = () => {
     const close = () => {
         setX(false)
     }
-    const yes = () => {
-        console.log("yes")
+    const yes1 = () => {
+        console.log("yes1")
         return false
+    }
+    const yes2 = () => {
+        console.log("yes2")
+        return false
+    }
+    const openModal1 = function () {
+        function bool() {
+            if (yes2()) {
+                onNo()
+            }
+        }
+        const onNo = modalDialog(
+            <strong>
+                你好
+                <button onClick={() => bool()}>这是用户的button</button>
+            </strong>,
+            [<button onClick={() => bool()}>ok</button>, <button onClick={() => onNo()}>no</button>]
+        )
+    }
+    const openModal2 = function () {
+        function bool() {
+            if (yes2()) {
+                onNo()
+            }
+        }
+        const onNo = modalDialog(
+            <strong>
+                你好
+                <button onClick={() => bool()}>这是用户的button</button>
+            </strong>,
+        )
     }
     return (
         <div>
@@ -46,9 +77,11 @@ const DialogExample: React.FunctionComponent = () => {
             <div>
                 <h1>example 3</h1>
                 <button onClick={() => alertDialog("1")}>alert</button>
-                <button onClick={() => confirmDialog("1", () => yes(), () => { console.log("no") })}>confirm</button>
+                <button onClick={() => confirmDialog("1", () => yes1(), () => { console.log("no") })}>confirm</button>
+                <button onClick={openModal1}>modal1</button>
+                <button onClick={openModal2}>modal2</button>
             </div >
-        </div>
+        </div >
     )
 }
 export default DialogExample
