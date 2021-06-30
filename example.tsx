@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { HashRouter as Router, Link, Route } from "react-router-dom";
+import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./example.scss"
 import Icon from "./lib/icons/icon"
 import IconExample from "./lib/icons/icon.example"
@@ -21,15 +21,15 @@ ReactDom.render((
                     </span>
                 </div>
             </Header>
-            <Layout>
+            <Layout className="site-layout">
                 {/* 左边侧边栏 */}
                 <Aside className='site-aside'>
                     <h2>组件</h2>
                     <ul>
-                        <li><Link to="/icon">Icon</Link></li>
-                        <li><Link to="/button">Button</Link></li>
-                        <li><Link to="/dialog">Dialog</Link></li>
-                        <li><Link to="/layout">layout</Link></li>
+                        <li><NavLink to="/icon">Icon</NavLink></li>
+                        <li><NavLink to="/button">Button</NavLink></li>
+                        <li><NavLink to="/dialog">Dialog</NavLink></li>
+                        <li><NavLink to="/layout">layout</NavLink></li>
                     </ul>
                 </Aside>
                 {/* 右边内容区域 */}
@@ -40,15 +40,9 @@ ReactDom.render((
                     <Route path={"/layout"} component={layoutExample} ></Route>
                 </Content>
             </Layout>
-            <Footer>
-                <div>
-                    <div>
-                        <Icon icon="gitHubSvg" />
-                    </div>
-                    <div>
-                        这是我的组件库
-                    </div>
-                </div>
+            <Footer className="site-footer">
+                <Icon icon="gitHubSvg" />
+                <span>这是孙匡东的组件库</span>
             </Footer>
         </Layout>
     </Router>

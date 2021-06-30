@@ -69,6 +69,7 @@ body {
 .site-aside {
     border-right: 1px solid #EEEEEE;
     margin-right: 16px;
+    min-height: 100vh;
 
     h2 {
         padding: $padding;
@@ -98,12 +99,21 @@ body {
     }
 }
 
+.site-layout {
+    margin-bottom: 60px;
+}
+
 .site-footer {
-    text-align: center;
     font-size: 12px;
     color: #666;
     padding: 16px 0;
     border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #eeeeee;
 }
 
 .example {
