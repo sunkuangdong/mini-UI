@@ -4,48 +4,48 @@ import Content from "./content";
 import Footer from "./footer";
 import Header from "./header";
 import Layout from "./layout";
-
+import "./layout.example.scss"
 const layoutExample: React.FunctionComponent = () => {
     return (
         <div>
             <div>
                 <h1>第一个例子</h1>
-                <Layout style={{ height: 300 }} className="hi">
-                    <Header className="hi">header</Header>
-                    <Content className="hi">Content</Content>
-                    <Footer className="hi">Footer</Footer>
+                <Layout style={{ height: 300, width: 500 }} className="layout-out">
+                    <Header className="header">header</Header>
+                    <Content className="content">Content</Content>
+                    <Footer className="footer">Footer</Footer>
                 </Layout>
             </div>
             <div>
                 <h1>第二个例子</h1>
-                <Layout style={{ height: 300 }} className="hi">
-                    <Header className="hi">header</Header>
-                    <Layout>
-                        <Aside className='hi'>Aside</Aside>
-                        <Content className="hi">Content</Content>
+                <Layout style={{ height: 300, width: 500 }} className="layout-out">
+                    <Header className="header">header</Header>
+                    <Layout className='layout-in'>
+                        <Aside className='aside'>Aside</Aside>
+                        <Content className="content">Content</Content>
                     </Layout>
-                    <Footer className="hi">Footer</Footer>
+                    <Footer className="footer">Footer</Footer>
                 </Layout>
             </div>
             <div>
                 <h1>第三个例子</h1>
-                <Layout style={{ height: 300 }} className="hi">
-                    <Header className="hi">header</Header>
+                <Layout style={{ height: 300, width: 500 }} className="layout-out">
+                    <Header className="header">header</Header>
                     <Layout>
-                        <Content className="hi">Content</Content>
-                        <Aside className='hi'>Aside</Aside>
+                        <Content className="content">Content</Content>
+                        <Aside className='aside'>Aside</Aside>
                     </Layout>
-                    <Footer className="hi">Footer</Footer>
+                    <Footer className="footer">Footer</Footer>
                 </Layout>
             </div>
             <div>
                 <h1>第四个例子</h1>
-                <Layout style={{ height: 300 }} className="hi">
-                    <Aside className='hi'>Aside</Aside>
-                    <Layout>
-                        <Header className="hi">header</Header>
-                        <Content className="hi">Content</Content>
-                        <Footer className="hi">Footer</Footer>
+                <Layout style={{ height: 300, width: 500 }} className="layout-out">
+                    <Aside className='aside'>Aside</Aside>
+                    <Layout className='layout-in'>
+                        <Header className="header">header</Header>
+                        <Content className="content">Content</Content>
+                        <Footer className="footer">Footer</Footer>
                     </Layout>
                 </Layout>
             </div>
