@@ -3,11 +3,12 @@ import ReactDom from "react-dom";
 import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./example.scss"
 import Icon from "./lib/icons/icon"
-import IconExample from "./lib/icons/icon.example"
+import IconDemo from "./lib/icons/icon.demo"
 import ButtonExample from "./lib/button.example"
 import DialogExample from "./lib/dialog/dialog.example"
 import layoutExample from "./lib/layout/layout.example"
 import { Layout, Header, Aside, Content, Footer } from "./lib/layout/layout";
+
 const logo = require('./mini.png')
 
 ReactDom.render((
@@ -34,7 +35,7 @@ ReactDom.render((
                 </Aside>
                 {/* 右边内容区域 */}
                 <Content>
-                    <Route path={"/icon"} component={IconExample} ></Route>
+                    <Route path={"/icon"} component={IconDemo} ></Route>
                     <Route path={"/button"} component={ButtonExample} ></Route>
                     <Route path={"/dialog"} component={DialogExample} ></Route>
                     <Route path={"/layout"} component={layoutExample} ></Route>

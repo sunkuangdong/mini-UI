@@ -45,6 +45,7 @@
     "jest-junit": "^6.3.0",
     "node-sass": "npm:sass",
     "react-test-renderer": "^16.8.4",
+    "raw-loader": "^2.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "svg-sprite-loader": "^4.1.3",
