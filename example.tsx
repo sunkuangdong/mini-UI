@@ -7,6 +7,7 @@ import IconDemo from "./lib/icons/icon.demo"
 import ButtonExample from "./lib/button.example"
 import DialogDemo from "./lib/dialog/dialog.demo"
 import layoutExample from "./lib/layout/layout.example"
+import FormExample1 from "./lib/form/form.example1"
 import { Layout, Header, Aside, Content, Footer } from "./lib/layout/layout";
 
 const logo = require('./mini.png')
@@ -31,6 +32,7 @@ ReactDom.render((
                         <li><NavLink to="/button">Button</NavLink></li>
                         <li><NavLink to="/dialog">Dialog</NavLink></li>
                         <li><NavLink to="/layout">layout</NavLink></li>
+                        <li><NavLink to="/form">Form</NavLink></li>
                     </ul>
                 </Aside>
                 {/* 右边内容区域 */}
@@ -39,6 +41,7 @@ ReactDom.render((
                     <Route path={"/button"} component={ButtonExample} ></Route>
                     <Route path={"/dialog"} component={DialogDemo} ></Route>
                     <Route path={"/layout"} component={layoutExample} ></Route>
+                    <Route path={"/form"} component={FormExample1} ></Route>
                 </Content>
             </Layout>
             <Footer className="site-footer">
