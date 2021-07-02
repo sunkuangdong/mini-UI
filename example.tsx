@@ -5,7 +5,7 @@ import "./example.scss"
 import Icon from "./lib/icons/icon"
 import IconDemo from "./lib/icons/icon.demo"
 import ButtonExample from "./lib/button.example"
-import DialogExample from "./lib/dialog/dialog.example"
+import DialogDemo from "./lib/dialog/dialog.demo"
 import layoutExample from "./lib/layout/layout.example"
 import { Layout, Header, Aside, Content, Footer } from "./lib/layout/layout";
 
@@ -37,7 +37,7 @@ ReactDom.render((
                 <Content>
                     <Route path={"/icon"} component={IconDemo} ></Route>
                     <Route path={"/button"} component={ButtonExample} ></Route>
-                    <Route path={"/dialog"} component={DialogExample} ></Route>
+                    <Route path={"/dialog"} component={DialogDemo} ></Route>
                     <Route path={"/layout"} component={layoutExample} ></Route>
                 </Content>
             </Layout>

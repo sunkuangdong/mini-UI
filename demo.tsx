@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import Icon from "./lib/icons/icon"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
 interface Props {
@@ -27,7 +27,8 @@ const Demo: React.FunctionComponent<Props> = (props) => {
         <div>
             {props.children}
             <div>
-                <button onClick={() => setCodeVisible(!codeVisible)}>源码展示</button>
+                {!codeVisible && <Icon icon="merge" onClick={() => setCodeVisible(!codeVisible)}></Icon>}
+                {codeVisible && <Icon icon="unFold" onClick={() => setCodeVisible(!codeVisible)}></Icon>}
                 {codeVisible && code}
             </div>
         </div>
