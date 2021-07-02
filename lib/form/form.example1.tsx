@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Form } from "./form";
+import { Form, FormValue } from "./form";
 
 const FormExample1: React.FunctionComponent = () => {
-    const [formData] = useState({
+    const [formData, setFormData] = useState<FormValue>({
         username: '',
         password: ''
     })
@@ -12,13 +12,21 @@ const FormExample1: React.FunctionComponent = () => {
     ])
     const buttons = [
         <button key='1' type="submit">确定</button>,
-        <button key='2'>取消</button>
+        <button key='2' onClick={() => onCancel}>取消</button>
     ]
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         console.log(formData);
     }
+    const onCancel = (e: React.FormEvent<HTMLFormElement>) => {
+        console.log(1)
+    }
     return (
-        <Form value={formData} fields={fields} buttons={buttons} onSubmit={onSubmit} />
+        <Form value={formData}
+            fields={fields}
+            buttons={buttons}
+            onSubmit={onSubmit}
+            onCancel={onCancel}
+            onChange={(newValue) => setFormData(newValue)} />
     )
 }
 
