@@ -7,12 +7,13 @@ interface Props {
     value: FormValue
     fields: Array<{ name: string, label: string, input: { type: string } }>
     buttons?: Array<ReactElement>
+    errors?: { [name: string]: { [text: string]: string }[] }
     onChange: (value: FormValue) => void
     onSubmit?: React.FormEventHandler<HTMLFormElement>
     onCancel?: React.FormEventHandler<HTMLFormElement>
 }
 const Form: React.FunctionComponent<Props> = (props) => {
-    const { fields, buttons, value } = props
+    const { fields, buttons, value, errors } = props
     const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
         props.onSubmit && props.onSubmit(e)
@@ -22,7 +23,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
     //     props.onCancel && props.onCancel(e)
     // }
     const onInputChange = (name: string, value: string) => {
-        props.onChange({ ...FormData, [name]: value })
+        props.onChange({ ...props.value, [name]: value })
     }
     return (
         <form onSubmit={onSubmit}>
@@ -31,6 +32,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
                     <span>{item.label}</span>
                     <input type={item.input.type} value={value[item.name]}
                         onChange={(e) => onInputChange(item.name, e.target.value)} />
+                    <div>
+                        {errors && errors[item.name]}
+                    </div>
                 </div>
             )}
             <div>
