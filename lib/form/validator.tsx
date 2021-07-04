@@ -6,39 +6,46 @@ interface FormRule {
     message?: string
     minLength?: number
     maxLength?: number
+    patten?: RegExp
 }
 type FormRules = Array<FormRule>
 interface FormErrors {
     [key: string]: string[]
 }
 
-const publishFunction = (rule: FormRule) => {
-    let errors: any = {}
-    if (rule.message && !rule.message.length) {
-        errors[rule.name] = false
-        errors["text"] = `${rule.name}必须填写`
-    } else {
-        errors[rule.name] = false
-        errors["text"] = rule.message
-    }
-    return errors
-}
-
 const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
-    // formValue :
-    // {
-    //     username: '',
-    //     password: ''
-    // }
+    const publishFunction = (rule: FormRule) => {
+        let errors: any = {}
+        if (rule.message && !rule.message.length) {
+            errors["text"] = `${rule.name}必须填写`
+        } else {
+            errors["text"] = rule.message
+        }
+        return errors
+    }
+    const addError = (rule: FormRule) => {
+        if (errors[rule.name] === undefined) {
+            errors[rule.name] = []
+        }
+        errors[rule.name].push(publishFunction(rule))
+    }
     let errors: any = {}
     rules.map(rule => {
         const value = formValue[rule.name]
         if (rule.require && !value) {
-            errors = {...publishFunction(rule)}
+            addError(rule)
         }
-        if (rule.minLength && !value) {
+        if (rule.minLength) {
             if (value.length < rule.minLength) {
-                errors = {...publishFunction(rule)}
+                addError(rule)
+            }
+        }
+        if (rule.maxLength && value.length > rule.maxLength) {
+            addError(rule)
+        }
+        if (rule.patten) {
+            if (!(rule.patten.test(value))) {
+                addError(rule)
             }
         }
     })

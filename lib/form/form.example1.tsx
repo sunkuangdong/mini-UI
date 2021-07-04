@@ -17,9 +17,11 @@ const FormExample1: React.FunctionComponent = () => {
     ]
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         const rules = [
-            { name: 'username', require: true, message: '1' },
+            { name: 'username', require: true, message: 'username必须填写' },
+            { name: 'password', require: true, message: 'password必须填写' },
             { name: 'username', minLength: 8, message: '最小可输入8个字' },
             { name: 'username', maxLength: 16, message: '最大可输入16个字' },
+            { name: 'username', patten: /^[A-Za-z]g/, message: '请只输入英文' },
         ]
         const error = Validator(formData, rules)
         console.log(error);
