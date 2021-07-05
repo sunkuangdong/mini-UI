@@ -31,7 +31,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
     }
     return (
         <form onSubmit={onSubmit} className={classes("mini-form", className)}>
-            <table>
+            <table className="mini-form-table">
                 <tbody>
                     {fields.map((item, index) =>
                         <tr className={classes("mini-form-row")} key={index}>
@@ -42,7 +42,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
                                 <Input type={item.input.type} value={value[item.name]}
                                     onChange={(e) => onInputChange(item.name, e.target.value)} />
                                 <div className="mini-form-error">
-                                    {errors && errors[item.name]}
+                                    {errors && errors[item.name] ? errors[item.name] : <span>&nbsp;</span>}
                                 </div>
                             </td>
                         </tr>
