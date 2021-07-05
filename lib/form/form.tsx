@@ -1,9 +1,13 @@
 import React, { ReactElement } from "react";
+import Input from "../input/input";
+import { classes } from "../helpers/classes";
+import "./form.scss"
 
 export interface FormValue {
     [key: string]: any
 }
 interface Props {
+    className?: string
     value: FormValue
     fields: Array<{ name: string, label: string, input: { type: string } }>
     buttons?: Array<ReactElement>
@@ -13,7 +17,7 @@ interface Props {
     onCancel?: React.FormEventHandler<HTMLFormElement>
 }
 const Form: React.FunctionComponent<Props> = (props) => {
-    const { fields, buttons, value, errors } = props
+    const { className, fields, buttons, value, errors } = props
     const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
         props.onSubmit && props.onSubmit(e)
@@ -26,17 +30,25 @@ const Form: React.FunctionComponent<Props> = (props) => {
         props.onChange({ ...props.value, [name]: value })
     }
     return (
-        <form onSubmit={onSubmit}>
-            {fields.map((item, index) =>
-                <div key={index}>
-                    <span>{item.label}</span>
-                    <input type={item.input.type} value={value[item.name]}
-                        onChange={(e) => onInputChange(item.name, e.target.value)} />
-                    <div>
-                        {errors && errors[item.name]}
-                    </div>
-                </div>
-            )}
+        <form onSubmit={onSubmit} className={classes("mini-form", className)}>
+            <table>
+                <tbody>
+                    {fields.map((item, index) =>
+                        <tr className={classes("mini-form-row")} key={index}>
+                            <td className="mini-form-td">
+                                <span className="mini-form-label">{item.label}</span>
+                            </td>
+                            <td className="mini-form-td">
+                                <Input type={item.input.type} value={value[item.name]}
+                                    onChange={(e) => onInputChange(item.name, e.target.value)} />
+                                <div>
+                                    {errors && errors[item.name]}
+                                </div>
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
             <div>
                 {buttons}
             </div>

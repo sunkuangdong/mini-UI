@@ -4,7 +4,7 @@ import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./example.scss"
 import Icon from "./lib/icons/icon"
 import IconDemo from "./lib/icons/icon.demo"
-import ButtonExample from "./lib/button.example"
+import ButtonExample from "./lib/button/button.example"
 import DialogDemo from "./lib/dialog/dialog.demo"
 import layoutExample from "./lib/layout/layout.example"
 import FormExample1 from "./lib/form/form.example1"

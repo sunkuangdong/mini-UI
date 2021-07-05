@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, FormValue } from "./form";
 import Validator, { noError } from "./validator";
+import Button from "../button/button";
 
 const FormExample1: React.FunctionComponent = () => {
     const [formData, setFormData] = useState<FormValue>({
@@ -12,8 +13,8 @@ const FormExample1: React.FunctionComponent = () => {
         { name: 'password', label: "密码", input: { type: "password" } },
     ])
     const buttons = [
-        <button key='1' type="submit">确定</button>,
-        <button key='2' onClick={() => onCancel}>取消</button>
+        <Button key='1' type="submit">确定</Button>,
+        <Button key='2' onClick={() => onCancel}>取消</Button>
     ]
 
     // 传递 errors ，渲染校验提示错误
