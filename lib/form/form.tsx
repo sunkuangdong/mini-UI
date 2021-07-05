@@ -41,17 +41,20 @@ const Form: React.FunctionComponent<Props> = (props) => {
                             <td className="mini-form-td">
                                 <Input type={item.input.type} value={value[item.name]}
                                     onChange={(e) => onInputChange(item.name, e.target.value)} />
-                                <div>
+                                <div className="mini-form-error">
                                     {errors && errors[item.name]}
                                 </div>
                             </td>
                         </tr>
                     )}
+                    <tr className="mini-form-tr">
+                        <td className="mini-form-td"></td>
+                        <td className="mini-form-td">
+                            {buttons}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <div>
-                {buttons}
-            </div>
         </form>
     )
 }

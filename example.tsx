@@ -36,7 +36,7 @@ ReactDom.render((
                     </ul>
                 </Aside>
                 {/* 右边内容区域 */}
-                <Content>
+                <Content className="site-content">
                     <Route path={"/icon"} component={IconDemo} ></Route>
                     <Route path={"/button"} component={ButtonExample} ></Route>
                     <Route path={"/dialog"} component={DialogDemo} ></Route>
