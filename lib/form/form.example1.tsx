@@ -26,7 +26,6 @@ const FormExample1: React.FunctionComponent = () => {
             { name: 'password', require: true, message: 'password 必须填写' },
             { name: 'username', minLength: 8, message: '最小可输入 8 个字' },
             { name: 'username', maxLength: 16, message: '最大可输入 16 个字' },
-            { name: 'username', regExp: /^[A-Za-z]$/, message: '请只输入英文' },
         ]
         setErrors(Validator(formData, rules))
         // 如果校验未通过

@@ -17,11 +17,6 @@ export function noError(errors: any) {
 }
 
 const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
-    const publishFunction = (rule: FormRule) => {
-        let errors: any = []
-        errors.push(rule.message ? rule.message : '')
-        return errors
-    }
     const addError = (rule: FormRule) => {
         if (errors[rule.name] === undefined) {
             errors[rule.name] = []
@@ -29,7 +24,8 @@ const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
         if (errors[rule.name].length) {
             return
         }
-        errors[rule.name].push(publishFunction(rule))
+        // 改变数据结构
+        errors[rule.name].push(rule.message ? rule.message : '')
     }
     let errors: any = {}
     rules.map(rule => {
